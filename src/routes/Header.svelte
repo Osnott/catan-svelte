@@ -1,72 +1,37 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://svelte.dev/docs/kit">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
-
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
 			<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={page.url.pathname === '/about' ? 'page' : undefined}>
+			<li aria-current={page.url.pathname == '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-			<li aria-current={page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
+			<li aria-current={page.url.pathname === '/settings' ? 'page' : undefined}>
+				<a href="/settings">Settings</a>
+			</li>
+			<li aria-current={page.url.pathname.startsWith('/board') ? 'page' : undefined}>
+				<a href="/board">Board</a>
 			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
 </header>
 
 <style>
 	header {
 		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
+		justify-content: left;
+		padding: 0em 0.5em 0em 0.5em;
 	}
 
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
+		padding: 0em 0.25em 0em 0.25em;
 	}
 
 	svg {
@@ -76,7 +41,7 @@
 	}
 
 	path {
-		fill: var(--background);
+		fill: var(--color-surface-0);
 	}
 
 	ul {
@@ -88,42 +53,69 @@
 		justify-content: center;
 		align-items: center;
 		list-style: none;
-		background: var(--background);
+		background: var(--color-surface-0);
 		background-size: contain;
+		border-radius: 0em 0em 1em 1em;
 	}
 
 	li {
 		position: relative;
-		height: 100%;
+		height: 90%;
+		border-radius: 1em;
+		border-style: solid;
+		border-width: 2px;
+		border-color: transparent;
+    cursor: pointer;
 	}
 
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
+	li[aria-current='page'] {
+		border-radius: 1em;
+		background: var(--color-highlight-0);
+		border-color: var(--color-theme-1);
+		animation: pressButton 0.3s;
+    transform: none;
+    transition: none;
+    cursor: default;
 	}
 
 	nav a {
 		display: flex;
 		height: 100%;
 		align-items: center;
-		padding: 0 0.5rem;
+		padding: 0 0.6rem;
 		color: var(--color-text);
 		font-weight: 700;
 		font-size: 0.8rem;
-		text-transform: uppercase;
+		text-transform: lowercase;
 		letter-spacing: 0.1em;
 		text-decoration: none;
-		transition: color 0.2s linear;
+    cursor: inherit;
+		transition: color 0.2s linear, transform 0.2s ease;
 	}
+
+  li[aria-current='page'] a {
+    transition: none;
+  }
+
+  li[aria-current='page'] a:hover {
+    transform: none;
+		color: inherit;
+  }
 
 	a:hover {
 		color: var(--color-theme-1);
+    transform: scale(0.95);
+	}
+
+	@keyframes pressButton {
+		0% {
+			transform: scale(0.9);
+		}
+		50% {
+			transform: scale(1.015);
+		}
+		100% {
+			transform: scale(1);
+		}
 	}
 </style>

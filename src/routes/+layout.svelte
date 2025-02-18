@@ -1,8 +1,22 @@
 <script lang="ts">
 	import Header from './Header.svelte';
+  import Footer from './Footer.svelte';
 	import '../app.css';
 
 	let { children } = $props();
+
+  import { onNavigate } from "$app/navigation";
+
+  onNavigate((navigation) => {
+    if (!document.startViewTransition) return;
+
+    return new Promise((resolve) => {
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      })
+    })
+  })
 </script>
 
 <div class="app">
@@ -12,11 +26,7 @@
 		{@render children()}
 	</main>
 
-	<footer>
-		<p>
-			visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
-		</p>
-	</footer>
+  <Footer />
 </div>
 
 <style>
@@ -30,28 +40,10 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
+		padding: 0.5rem;
 		width: 100%;
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
 	}
 </style>
