@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>About</title>
+	<title>catan builder ~ about</title>
 	<meta name="description" content="about catan builder" />
 </svelte:head>
 
