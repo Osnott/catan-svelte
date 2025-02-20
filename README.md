@@ -1,4 +1,9 @@
-# sv
+# catan-svelte
+
+## Infinite catan board generation, now in svelte!
+
+
+## Uses the demo `sv` repo as a base
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
