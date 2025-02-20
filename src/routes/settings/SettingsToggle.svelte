@@ -57,5 +57,6 @@
   transform: none;
   padding: 8px;
   overflow: hidden;
+  cursor: pointer;
 }
 </style>
