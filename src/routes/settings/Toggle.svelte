@@ -31,7 +31,7 @@
 	.toggle-switcher {
 		height: var(--base-size);
 		width: var(--base-size);
-		background: var(--color-muted);
+		background: var(--color-text);
 		border-radius: 100px;
 		transform: translateX(0%);
 		transition:
@@ -40,7 +40,7 @@
 	}
 
 	.toggle.enabled {
-		background: var(--color-theme-2);
+		background: var(--color-theme-3);
 	}
 
 	.toggle.enabled .toggle-switcher {
