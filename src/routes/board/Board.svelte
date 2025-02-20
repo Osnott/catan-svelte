@@ -1,19 +1,32 @@
 <script lang="ts">
   import { T } from '@threlte/core'
-  import { OrbitControls } from '@threlte/extras'
+  import { Edges, Grid, OrbitControls } from '@threlte/extras'
 </script>
 
 <T.PerspectiveCamera
   makeDefault
-  position={[5, 5, 5]}
+  position={[0, 5, 0]}
   oncreate={(ref) => {
-    ref.lookAt(0, 1, 0)
+    ref.lookAt(0, 0, 0)
   }}
 >
-<OrbitControls />
+<OrbitControls 
+  enableDamping
+  dampingFactor={0.075}
+  maxPolarAngle={(Math.PI / 2) - 0.2}
+/>
 </T.PerspectiveCamera>
 
-<T.Mesh position.y={1}>
-  <T.BoxGeometry args={[1, 2, 1]} />
-  <T.MeshBasicMaterial color="red" />
+<T.Mesh position.y={0}>
+  <T.CylinderGeometry args={[1, 1, 0.2, 6]} />
+  <T.MeshBasicMaterial color="blue" />
+  <Edges color="black" width={10}>
+    <T.LineBasicMaterial color="black" linewidth={2.5}/>
+  </Edges>
 </T.Mesh>
+
+<Grid
+  gridSize={[10,10]}
+  cellColor={"#46536b"}
+  selectionThickness={0}
+/>
