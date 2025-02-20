@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
 	import Board from './Board.svelte';
+	import { PerfMonitor } from '@threlte/extras';
+  import settings from "$lib/state/settings"
+
+  $: threlteDebug = !!$settings['debug']['threlteDebug']
 </script>
 
 <svelte:head>
@@ -9,6 +13,13 @@
 
 <div class="board-wrapper">
 	<Canvas>
+    {#if threlteDebug}
+      <PerfMonitor
+        anchorX={'left'}
+        anchorY={'bottom'}
+        logsPerSecond={30}
+      />
+    {/if}
 		<Board />
 	</Canvas>
 </div>
@@ -19,7 +30,7 @@
   border-width: 2px;
   border-color: var(--color-surface-0);
   border-radius: 1em;
-  height: 100%;
   width: 100%;
+  aspect-ratio: 16/9;
 }
 </style>
