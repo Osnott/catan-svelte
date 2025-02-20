@@ -41,7 +41,7 @@
 	}
 
 	path {
-		fill: var(--color-surface-0);
+		fill: var(--color-overlay);
 	}
 
 	ul {
@@ -53,7 +53,7 @@
 		justify-content: center;
 		align-items: center;
 		list-style: none;
-		background: var(--color-surface-0);
+		background: var(--color-overlay);
 		background-size: contain;
 		border-radius: 0em 0em 1em 1em;
 	}

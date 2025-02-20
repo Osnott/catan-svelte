@@ -28,7 +28,7 @@
 .board-wrapper {
   border-style: solid;
   border-width: 2px;
-  border-color: var(--color-surface-0);
+  border-color: var(--color-overlay);
   border-radius: 1em;
   width: 100%;
   aspect-ratio: 16/9;
