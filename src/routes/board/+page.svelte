@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>catan builder ~ board</title>
+	<title>board ~ catan builder</title>
 </svelte:head>
 
 <div class="board-wrapper">
